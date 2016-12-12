@@ -28,8 +28,28 @@ class SetProduct {
         $this->discount = $num;
     }
 
-    function setDiscount($num) {
+    function setPrice($num) {
         return ($this->price - $this->discount);
+    }
+
+}
+
+class ShopProductWriter {
+
+    public $products = [];
+
+    public function addProduct(SetProduct $shopProduct) {
+        $this->products[] = $shopProduct;
+    }
+
+    public function write() {
+        $str = "";
+        foreach ($this->products as $product) {
+            $str .= "$product->title: ";
+            $str .= $product->getProducerl();
+            $str .= $product->getPrice();
+        }
+        echo $str;
     }
 
 }

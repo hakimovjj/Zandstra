@@ -5,7 +5,7 @@ class SetProduct {
     public $title = 'Вид товара';
     public $productMainName = 'Фамилия автора';
     public $producerFirstName = 'Имя автора';
-    public $price = 0;
+    private $price = 0;
 
     function __construct($title, $firstName, $mainName, $price) {
         $this->title = $title;
@@ -15,7 +15,7 @@ class SetProduct {
     }
 
     function getProducer() {
-        return "{$this->producerFirstName}". "{$this->productMainName}";
+        return "{$this->producerFirstName}" . "{$this->productMainName}";
     }
 
     function getSummaryLine() {
@@ -24,8 +24,12 @@ class SetProduct {
         return $base;
     }
 
-    function getDiscount() {
-        
+    function getDiscount($num) {
+        $this->discount = $num;
+    }
+
+    function setDiscount($num) {
+        return ($this->price - $this->discount);
     }
 
 }
@@ -52,4 +56,4 @@ class CD extends SetProduct {
 }
 
 $cd = new CD("This Love", "Maroon", '5', 430, '430 sec');
-$cd->getSummaryLine();
+echo $cd->getProducer();

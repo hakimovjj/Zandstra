@@ -74,7 +74,7 @@ class CD extends SetProduct {
     }
 
 }
-echo '1';
+
 
 $cd = new CD("This Love", "Maroon", '5', 430, '430 sec');
 echo $cd->getProducer();

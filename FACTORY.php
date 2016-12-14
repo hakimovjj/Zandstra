@@ -1,32 +1,36 @@
 <?php
-abstract class Employ {
-    protected $name;
-    function __construct($name) {
-        return $this->name = $name;
-    }
-    abstract function doing();
-}
-
-class Minion extends Employ {
-    public function doing() {
-        echo $this->name . ": убери со стола";
-    }
-}
-
 class Boss {
-    private $car = [];
-    function addEmployee($name) {
-        $this->car[] = new Minion($name);
+
+    const NEWS = 1;
+    const OURS = 2;
+    private $mode = 1;
+
+    function __construct($mode) {
+        $this->mode = $mode;
     }
-    function doing() {
-        if (count($this->car) > 0);
-            $emp = array_pop($this->car);
-            $emp->doing();
+
+    function getNewObj() {
+        switch ($this->mode) {
+            case (self::NEWS) :
+                return new News();
+            case (self::OURS) :
+                return new OURS();
+        }
+    }
+
+}
+
+class News {
+    function __construct() {
+        echo __CLASS__;
     }
 }
 
-$ob = new Boss();
-$ob->addEmployee('Nastya');
-$ob->addEmployee('Алекс');
+class OURS {
+    function __construct() {
+        echo __CLASS__;
+    }
+}
 
-$ob->doing();
+$boss = new Boss(1);
+$boss->getNewObj();

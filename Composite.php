@@ -55,5 +55,5 @@ $sub_army->addUnit(new Archers());
 $sub_army->addUnit(new Archers());
 
 $main_army->addUnit($sub_army);
-echo ($main_army instanceof Unit);
+
 echo "Атакующая сила: {$main_army->bombardStrange()}\n";
